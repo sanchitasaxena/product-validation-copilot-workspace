@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DiscoveryGuide",
+  "type": "object",
+  "required": ["title", "productArea", "assumptions", "questions", "humanReviewRequired"],
+  "properties": {
+    "title": { "type": "string" },
+    "productArea": { "type": "string" },
+    "decisionInformed": { "type": "string" },
+    "audienceResolutionRef": { "type": ["string", "null"] },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["text", "status"],
+        "properties": {
+          "text": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["source-backed", "to-be-discovered", "proposed-catalog-update", "user-provided-assumption"]
+          },
+          "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+          "sourceRefs": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "questions": { "type": "array", "items": { "type": "string" } },
+    "synthesisPrompts": { "type": "array", "items": { "type": "string" } },
+    "humanReviewRequired": { "type": "boolean" }
+  }
+}

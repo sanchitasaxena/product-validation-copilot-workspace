@@ -1,0 +1,45 @@
+{
+  "feature": "Registry artifact approval workflow",
+  "productArea": "HCP Terraform Registry",
+  "documents": [
+    {
+      "path": "examples/source-document-intake/sources/feature-brief.md",
+      "type": "md",
+      "extractionMethod": "utf-8-text",
+      "sha256": "157af45949802161f03dcdf809675ff5bf5e4fe3963eb0bd686fea4d06d71f5b",
+      "characterCount": 885,
+      "draftScenarioCount": 4,
+      "warnings": []
+    },
+    {
+      "path": "examples/source-document-intake/sources/api-notes.txt",
+      "type": "txt",
+      "extractionMethod": "utf-8-text",
+      "sha256": "253beecfe892396e345cafd60c29db7e95914cb86af5f439668300871e98f502",
+      "characterCount": 502,
+      "draftScenarioCount": 2,
+      "warnings": []
+    },
+    {
+      "path": "examples/source-document-intake/sources/permissions-notes.docx",
+      "type": "docx",
+      "extractionMethod": "officecli-view-text",
+      "sha256": "dab11da16941ab3ac23e7accb25b99ca8c1780b936555f70cc1cdb6a1463b2ec",
+      "characterCount": 611,
+      "draftScenarioCount": 2,
+      "warnings": []
+    }
+  ],
+  "featureAreas": [
+    "Approval policy setup",
+    "Run enforcement",
+    "Edge cases",
+    "Approval policy API",
+    "Approval permissions",
+    "Approval audit"
+  ],
+  "draftScenarioCount": 8,
+  "sourceBackedScenarioCount": 7,
+  "inferredScenarioCount": 1,
+  "engineeringReviewRequired": true
+}

@@ -1,0 +1,85 @@
+{
+  "resolutionStatus": "discovery-required",
+  "mode": "discovery",
+  "requestedArtifact": "research",
+  "productArea": "HCP Billing",
+  "featureOrProblemSpace": "Imaginary billing dashboard",
+  "selectedSource": null,
+  "match": {
+    "score": 0,
+    "confidence": "low",
+    "reasons": [
+      "No local fixture matched above threshold. Fixtures scanned: 1."
+    ],
+    "dataStatus": "to-be-discovered"
+  },
+  "audienceContext": {
+    "primaryPersona": {
+      "text": "finance admin",
+      "status": "to-be-discovered",
+      "confidence": "low",
+      "sourceRefs": []
+    },
+    "secondaryPersonas": [],
+    "jtbd": [
+      {
+        "text": "JTBD to be discovered through research.",
+        "status": "to-be-discovered",
+        "confidence": "low",
+        "sourceRefs": []
+      }
+    ],
+    "cuj": [
+      {
+        "text": "CUJ to be discovered through research.",
+        "status": "to-be-discovered",
+        "confidence": "low",
+        "sourceRefs": []
+      }
+    ]
+  },
+  "ambiguities": [
+    "No local catalog-grounded match was found."
+  ],
+  "missingContext": [
+    "Confirmed persona",
+    "Confirmed JTBD",
+    "Confirmed CUJ",
+    "Source references"
+  ],
+  "allowedArtifacts": [
+    "discovery research plan",
+    "discovery interview guide",
+    "contextual inquiry guide",
+    "exploratory QA checklist"
+  ],
+  "blockedArtifacts": [
+    "official persona/JTBD/CUJ claims",
+    "catalog-backed usability validation plan",
+    "Target Audience Catalog update without human review"
+  ],
+  "humanReviewRequired": true,
+  "alternatives": [],
+  "generatorContext": {
+    "targetAudienceRef": null,
+    "targetAudienceSummary": {
+      "dataStatus": "to-be-discovered",
+      "resolutionStatus": "discovery-required",
+      "mode": "discovery",
+      "confidence": "low",
+      "primaryPersona": "finance admin",
+      "jtbd": "JTBD to be discovered through research.",
+      "jtbdList": [
+        "JTBD to be discovered through research."
+      ],
+      "cujUsedForQA": [
+        "CUJ to be discovered through research."
+      ],
+      "cujUsedForResearch": [
+        "CUJ to be discovered through research."
+      ],
+      "sourceRefs": [],
+      "humanReviewRequired": true
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DiscoverySurvey",
+  "type": "object",
+  "required": [
+    "title",
+    "productArea",
+    "introduction",
+    "consentText",
+    "privacyText",
+    "sections",
+    "questions",
+    "humanReviewRequired"
+  ],
+  "properties": {
+    "title": { "type": "string", "minLength": 1 },
+    "productArea": { "type": "string", "minLength": 1 },
+    "decisionInformed": { "type": "string" },
+    "introduction": { "type": "string", "minLength": 1 },
+    "consentText": { "type": "string", "minLength": 1 },
+    "privacyText": { "type": "string", "minLength": 1 },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "prompt", "responseType", "required"],
+        "properties": {
+          "id": { "type": "string" },
+          "prompt": { "type": "string", "minLength": 1 },
+          "responseType": {
+            "type": "string",
+            "enum": ["long-text", "short-text", "single-select", "multi-select", "rating"]
+          },
+          "required": { "type": "boolean" },
+          "sectionId": { "type": "string" },
+          "answerChoices": { "type": "array", "items": { "type": "string" } },
+          "ratingScale": {
+            "type": ["object", "null"],
+            "properties": {
+              "min": { "type": "integer" },
+              "max": { "type": "integer" },
+              "minLabel": { "type": "string" },
+              "maxLabel": { "type": "string" }
+            }
+          },
+          "branchingRecommendation": { "type": "string" },
+          "mapsTo": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "humanReviewRequired": { "type": "boolean", "const": true }
+  }
+}

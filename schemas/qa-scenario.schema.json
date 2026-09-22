@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QAScenario",
+  "type": "object",
+  "required": ["id", "feature", "description", "expectedResult", "status"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^T-[0-9]+$" },
+    "feature": { "type": "string" },
+    "description": { "type": "string" },
+    "prerequisites": { "type": ["string", "null"] },
+    "expectedResult": { "type": "string" },
+    "testers": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["Pending", "In Progress", "Passed", "Failed", "Blocked"] },
+    "scenarioType": {
+      "type": "string",
+      "enum": ["UI", "API", "CLI", "Permissions", "Data", "Regression", "Edge Case", "Setup", "Exploratory"]
+    },
+    "sourceStatus": {
+      "type": "string",
+      "enum": ["source-backed", "inferred", "regression", "edge-case", "exploratory"]
+    },
+    "dependsOn": { "type": "array", "items": { "type": "string" } },
+    "relatedBugIds": { "type": "array", "items": { "type": "string" } },
+    "sourceRefs": { "type": "array", "items": { "type": "string" } },
+    "needsEngineeringReview": { "type": "boolean" },
+    "styleWarnings": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" }
+  }
+}

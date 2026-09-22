@@ -1,0 +1,89 @@
+{
+  "mode": "catalog-grounded",
+  "productArea": "HCP Terraform Registry",
+  "featureOrProblemSpace": "Registry artifact approval workflow",
+  "audienceContext": {
+    "primaryPersona": {
+      "text": "Platform admin responsible for governing approved Terraform providers and modules.",
+      "status": "source-backed",
+      "confidence": "high",
+      "sourceRefs": [
+        "examples/research-source-intake/sources/registry-audit-trail-prd.md#text-line-7",
+        "examples/research-source-intake/sources/target-audience-catalog.synthetic.json"
+      ],
+      "matchedCatalogSource": "examples/research-source-intake/sources/target-audience-catalog.synthetic.json",
+      "matchedCatalogText": "Platform admin responsible for governing approved Terraform providers and modules.",
+      "matchSimilarity": 1.0,
+      "matchDataStatus": "synthetic-test-data",
+      "newProposal": false
+    },
+    "secondaryPersonas": [],
+    "jtbd": [
+      {
+        "text": "When teams consume Terraform registry artifacts, I need to approve and control which artifacts are allowed so that workspaces do not use unapproved dependencies.",
+        "status": "source-backed",
+        "confidence": "high",
+        "sourceRefs": [
+          "examples/research-source-intake/sources/registry-audit-trail-prd.md#text-line-9",
+          "examples/research-source-intake/sources/target-audience-catalog.synthetic.json"
+        ],
+        "matchedCatalogSource": "examples/research-source-intake/sources/target-audience-catalog.synthetic.json",
+        "matchedCatalogText": "When teams consume Terraform registry artifacts, I need to approve and control which artifacts are allowed so that workspaces do not use unapproved dependencies.",
+        "matchSimilarity": 1.0,
+        "matchDataStatus": "synthetic-test-data",
+        "newProposal": false
+      },
+      {
+        "text": "When compliance auditors need historical approval decisions, I want to export an audit trail so that we can demonstrate regulatory compliance during a review.",
+        "status": "proposed-catalog-update",
+        "confidence": "low",
+        "sourceRefs": [
+          "examples/research-source-intake/sources/registry-audit-trail-prd.md#text-line-11"
+        ],
+        "matchedCatalogSource": null,
+        "newProposal": true
+      }
+    ],
+    "cuj": [
+      {
+        "text": "Admin reviews and updates approval rules.",
+        "status": "source-backed",
+        "confidence": "high",
+        "sourceRefs": [
+          "examples/research-source-intake/sources/registry-audit-trail-prd.md#text-line-13",
+          "examples/research-source-intake/sources/target-audience-catalog.synthetic.json"
+        ],
+        "matchedCatalogSource": "examples/research-source-intake/sources/target-audience-catalog.synthetic.json",
+        "matchedCatalogText": "Admin reviews and updates approval rules.",
+        "matchSimilarity": 1.0,
+        "matchDataStatus": "synthetic-test-data",
+        "newProposal": false
+      },
+      {
+        "text": "Auditor exports a compliance report for a specific approval rule.",
+        "status": "proposed-catalog-update",
+        "confidence": "low",
+        "sourceRefs": [
+          "examples/research-source-intake/sources/registry-audit-trail-prd.md#text-line-15"
+        ],
+        "matchedCatalogSource": null,
+        "newProposal": true
+      }
+    ]
+  },
+  "ambiguities": [],
+  "missingContext": [
+    "2 JTBD/CUJ/persona candidate(s) are new proposals and are not yet part of the approved Target Audience Catalog."
+  ],
+  "allowedArtifacts": [
+    "discovery guide",
+    "research plan (draft)"
+  ],
+  "blockedArtifacts": [
+    "official Target Audience Catalog update without human review"
+  ],
+  "humanReviewRequired": true,
+  "proposedFromSourceDocs": [
+    "examples/research-source-intake/sources/registry-audit-trail-prd.md"
+  ]
+}

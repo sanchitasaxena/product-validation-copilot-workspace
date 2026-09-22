@@ -1,0 +1,17 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Generated local workflow output
+generators/xlsx/out/
+
+# Real catalog snapshots may contain confidential research context.
+target-audience/source/*.json
+target-audience/index/*.json
+!target-audience/source/.gitkeep
+!target-audience/index/.gitkeep
+
+# Local demo output
+demo-output/

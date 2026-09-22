@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ResearchContext",
+  "type": "object",
+  "required": ["workflow", "productArea", "decisionInformed", "targetAudienceMode"],
+  "properties": {
+    "workflow": { "type": "string" },
+    "productArea": { "type": "string" },
+    "decisionInformed": { "type": "string" },
+    "targetAudienceMode": { "type": "string", "enum": ["catalog-grounded", "discovery"] },
+    "audienceResolutionRef": { "type": "string" },
+    "sourceDocs": { "type": "array", "items": { "type": "string" } },
+    "researchQuestions": { "type": "array", "items": { "type": "string" } },
+    "missingContext": { "type": "array", "items": { "type": "string" } }
+  }
+}
+

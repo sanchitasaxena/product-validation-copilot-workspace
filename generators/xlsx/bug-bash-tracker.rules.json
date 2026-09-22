@@ -1,0 +1,64 @@
+{
+  "name": "bug-bash-tracker-rules",
+  "version": "0.1.0",
+  "styleSource": "Original RAUC bug tracker engineering-authored scenarios",
+  "scenarioRules": {
+    "requiredFields": ["id", "feature", "description", "expectedResult", "status"],
+    "recommendedFields": ["prerequisites", "testers", "scenarioType", "sourceStatus", "dependsOn", "relatedBugIds", "notes"],
+    "idPattern": "^T-[0-9]+$",
+    "uniqueIds": true,
+    "acceptedStatuses": ["Pending", "In Progress", "Passed", "Failed", "Blocked"],
+    "statusAliases": {
+      "⚪ Pending": "Pending",
+      "🟡 In Progress": "In Progress",
+      "✅ Passed": "Passed",
+      "❌ Failed": "Failed"
+    },
+    "disallowedDescriptionPrefixes": ["Verify that", "As a user", "You are", "How would you", "Tell me about"],
+    "preferredDescriptionPatterns": [
+      "Create {object}",
+      "Assign {object} to {target}",
+      "Unassign {object} from {target}",
+      "Delete {object}",
+      "Check if {state} is visible on {surface}",
+      "List {objects} on {surface}",
+      "Using {interface} to create a {result}",
+      "Configuring {state}"
+    ],
+    "dependencyPattern": "T-[0-9]+",
+    "dependencySeparators": ["/", ",", " "],
+    "failedScenarioRequiresBugOrNote": true,
+    "inferredScenarioRequiresReview": true
+  },
+  "bugRules": {
+    "requiredFields": ["type", "description", "status"],
+    "recommendedFields": ["dateReported", "feature", "severity", "owner", "evidenceLinks", "scenarioId"],
+    "acceptedTypes": ["Bug", "Friction", "Improvement"],
+    "acceptedSeverities": ["1-Critical", "2-High", "3-Medium", "4-Low", "Unrated"],
+    "acceptedStatuses": ["New", "In Progress", "QA", "Resolved", "Deferred"],
+    "parseScenarioIdFromDescription": true,
+    "scenarioIdPattern": "T-[0-9]+",
+    "orphanBugClassifications": ["orphan", "exploratory", "no-scenario"],
+    "unresolvedStatuses": ["New", "In Progress", "QA"],
+    "criticalHighSeverities": ["1-Critical", "2-High"],
+    "unresolvedCriticalHighRequiresOwnerAndEvidence": true
+  },
+  "evidenceRules": {
+    "acceptedTypes": ["slack", "box", "screenshot", "jira", "github", "logs", "other"],
+    "urlRecommended": true,
+    "flagLikelyColumnDrift": true
+  },
+  "summaryRules": [
+    "scenarioCountByFeature",
+    "statusRateByFeature",
+    "failedScenariosWithoutBugs",
+    "bugsByType",
+    "bugsBySeverity",
+    "openCriticalHighBugs",
+    "ownerWorkload",
+    "orphanBugs",
+    "blockedDependencyChains",
+    "releaseReadinessRisks"
+  ]
+}
+

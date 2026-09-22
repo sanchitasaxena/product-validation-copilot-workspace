@@ -1,0 +1,121 @@
+{
+  "resolutionStatus": "confirmed",
+  "mode": "catalog-grounded",
+  "requestedArtifact": "qa",
+  "productArea": "HCP Terraform Registry",
+  "featureOrProblemSpace": "Registry artifact approval workflow",
+  "selectedSource": "target-audience/examples/synthetic-registry-artifact-approval.audience.json",
+  "match": {
+    "score": 38,
+    "confidence": "high",
+    "reasons": [
+      "token overlap: admin, approval, artifact, hcp, platform, registry, terraform, workflow",
+      "exact product area match",
+      "exact feature/problem-space match",
+      "primary persona match"
+    ],
+    "dataStatus": "synthetic-test-data"
+  },
+  "audienceContext": {
+    "primaryPersona": {
+      "text": "Synthetic platform admin responsible for governing approved Terraform providers and modules.",
+      "status": "user-provided-assumption",
+      "confidence": "medium",
+      "sourceRefs": [
+        "Synthetic test fixture only; not official Target Audience Catalog data."
+      ]
+    },
+    "secondaryPersonas": [
+      {
+        "text": "Synthetic workspace operator whose runs can be blocked by unapproved registry artifacts.",
+        "status": "user-provided-assumption",
+        "confidence": "low",
+        "sourceRefs": [
+          "Synthetic test fixture only; not official Target Audience Catalog data."
+        ]
+      }
+    ],
+    "jtbd": [
+      {
+        "text": "When teams consume Terraform registry artifacts, I need to approve and control which artifacts are allowed so that workspaces do not use unapproved dependencies.",
+        "status": "user-provided-assumption",
+        "confidence": "medium",
+        "sourceRefs": [
+          "Synthetic test fixture only; not official Target Audience Catalog data."
+        ]
+      }
+    ],
+    "cuj": [
+      {
+        "text": "Admin configures allowed registry artifacts.",
+        "status": "user-provided-assumption",
+        "confidence": "medium",
+        "sourceRefs": [
+          "Synthetic test fixture only; not official Target Audience Catalog data."
+        ]
+      },
+      {
+        "text": "Workspace run fails when an unapproved artifact is used.",
+        "status": "user-provided-assumption",
+        "confidence": "medium",
+        "sourceRefs": [
+          "Synthetic test fixture only; not official Target Audience Catalog data."
+        ]
+      },
+      {
+        "text": "Admin reviews and updates approval rules.",
+        "status": "user-provided-assumption",
+        "confidence": "medium",
+        "sourceRefs": [
+          "Synthetic test fixture only; not official Target Audience Catalog data."
+        ]
+      }
+    ]
+  },
+  "ambiguities": [
+    "Fixture is marked catalog-grounded to exercise downstream flow, but all content is synthetic and must not be treated as official catalog-backed context."
+  ],
+  "missingContext": [
+    "No real catalog source reference.",
+    "No validated recruiting or entitlement constraints."
+  ],
+  "allowedArtifacts": [
+    "synthetic QA context",
+    "synthetic bug bash tracker",
+    "workflow validation notes"
+  ],
+  "blockedArtifacts": [
+    "official Target Audience Catalog update",
+    "UXR intake submitted as source-backed catalog evidence"
+  ],
+  "humanReviewRequired": true,
+  "alternatives": [],
+  "generatorContext": {
+    "targetAudienceRef": "target-audience/examples/synthetic-registry-artifact-approval.audience.json",
+    "targetAudienceSummary": {
+      "dataStatus": "synthetic-test-data",
+      "resolutionStatus": "confirmed",
+      "mode": "catalog-grounded",
+      "confidence": "high",
+      "primaryPersona": "Synthetic platform admin responsible for governing approved Terraform providers and modules.",
+      "jtbd": "When teams consume Terraform registry artifacts, I need to approve and control which artifacts are allowed so that workspaces do not use unapproved dependencies.",
+      "jtbdList": [
+        "When teams consume Terraform registry artifacts, I need to approve and control which artifacts are allowed so that workspaces do not use unapproved dependencies."
+      ],
+      "cujUsedForQA": [
+        "Admin configures allowed registry artifacts.",
+        "Workspace run fails when an unapproved artifact is used.",
+        "Admin reviews and updates approval rules."
+      ],
+      "cujUsedForResearch": [
+        "Admin configures allowed registry artifacts.",
+        "Workspace run fails when an unapproved artifact is used.",
+        "Admin reviews and updates approval rules."
+      ],
+      "sourceRefs": [
+        "target-audience/examples/synthetic-registry-artifact-approval.audience.json"
+      ],
+      "humanReviewRequired": true
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "title": "Discovery guide: HCP Terraform Registry",
+  "productArea": "HCP Terraform Registry",
+  "decisionInformed": "Whether compliance auditors can independently export approval audit trails without engineering support.",
+  "audienceResolutionRef": "examples/research-source-intake/workflow-output/audience-proposal.json",
+  "assumptions": [
+    {
+      "text": "Platform admin responsible for governing approved Terraform providers and modules.",
+      "status": "source-backed",
+      "confidence": "high",
+      "sourceRefs": [
+        "examples/research-source-intake/sources/registry-audit-trail-prd.md#text-line-7",
+        "examples/research-source-intake/sources/target-audience-catalog.synthetic.json"
+      ],
+      "matchedCatalogSource": "examples/research-source-intake/sources/target-audience-catalog.synthetic.json",
+      "matchedCatalogText": "Platform admin responsible for governing approved Terraform providers and modules.",
+      "matchSimilarity": 1.0,
+      "matchDataStatus": "synthetic-test-data",
+      "newProposal": false
+    },
+    {
+      "text": "When teams consume Terraform registry artifacts, I need to approve and control which artifacts are allowed so that workspaces do not use unapproved dependencies.",
+      "status": "source-backed",
+      "confidence": "high",
+      "sourceRefs": [
+        "examples/research-source-intake/sources/registry-audit-trail-prd.md#text-line-9",
+        "examples/research-source-intake/sources/target-audience-catalog.synthetic.json"
+      ],
+      "matchedCatalogSource": "examples/research-source-intake/sources/target-audience-catalog.synthetic.json",
+      "matchedCatalogText": "When teams consume Terraform registry artifacts, I need to approve and control which artifacts are allowed so that workspaces do not use unapproved dependencies.",
+      "matchSimilarity": 1.0,
+      "matchDataStatus": "synthetic-test-data",
+      "newProposal": false
+    },
+    {
+      "text": "When compliance auditors need historical approval decisions, I want to export an audit trail so that we can demonstrate regulatory compliance during a review.",
+      "status": "proposed-catalog-update",
+      "confidence": "low",
+      "sourceRefs": [
+        "examples/research-source-intake/sources/registry-audit-trail-prd.md#text-line-11"
+      ],
+      "matchedCatalogSource": null,
+      "newProposal": true
+    },
+    {
+      "text": "Admin reviews and updates approval rules.",
+      "status": "source-backed",
+      "confidence": "high",
+      "sourceRefs": [
+        "examples/research-source-intake/sources/registry-audit-trail-prd.md#text-line-13",
+        "examples/research-source-intake/sources/target-audience-catalog.synthetic.json"
+      ],
+      "matchedCatalogSource": "examples/research-source-intake/sources/target-audience-catalog.synthetic.json",
+      "matchedCatalogText": "Admin reviews and updates approval rules.",
+      "matchSimilarity": 1.0,
+      "matchDataStatus": "synthetic-test-data",
+      "newProposal": false
+    },
+    {
+      "text": "Auditor exports a compliance report for a specific approval rule.",
+      "status": "proposed-catalog-update",
+      "confidence": "low",
+      "sourceRefs": [
+        "examples/research-source-intake/sources/registry-audit-trail-prd.md#text-line-15"
+      ],
+      "matchedCatalogSource": null,
+      "newProposal": true
+    }
+  ],
+  "questions": [
+    "Can auditors find and export the audit trail without training?",
+    "What audit trail fields do compliance reviewers actually need?"
+  ],
+  "synthesisPrompts": [
+    "For each assumption, note whether the session validated, contradicted, or left it undetermined.",
+    "Propose Target Audience Catalog updates only for assumptions with clear, repeated evidence.",
+    "2 JTBD/CUJ candidate(s) from source documents are new proposals, not confirmed catalog entries; use this session to validate or refute them before proposing a catalog update."
+  ],
+  "humanReviewRequired": true
+}

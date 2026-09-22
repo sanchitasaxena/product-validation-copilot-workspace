@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TestingGuide",
+  "type": "object",
+  "required": ["title", "productVersion", "environment", "tasks", "humanReviewRequired"],
+  "properties": {
+    "title": { "type": "string" },
+    "audienceResolutionRef": { "type": ["string", "null"] },
+    "productVersion": { "type": "string" },
+    "environment": { "type": "string" },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "prompt", "successCriteria"],
+        "properties": {
+          "title": { "type": "string" },
+          "prompt": { "type": "string" },
+          "successCriteria": { "type": "array", "items": { "type": "string" } },
+          "facilitatorNotes": { "type": "string" }
+        }
+      }
+    },
+    "humanReviewRequired": { "type": "boolean" }
+  }
+}

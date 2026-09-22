@@ -1,0 +1,222 @@
+{
+  "feature": "Registry artifact approval workflow",
+  "productArea": "HCP Terraform Registry",
+  "qaGoal": "bug-bash",
+  "scenarioStyleSource": "Original RAUC bug tracker engineering-authored scenarios",
+  "styleGuideRef": "qa/scenario-style-guide.md",
+  "validationRulesRef": "generators/xlsx/bug-bash-tracker.rules.json",
+  "sourceDocs": [
+    "examples/source-document-intake/sources/feature-brief.md",
+    "examples/source-document-intake/sources/api-notes.txt",
+    "examples/source-document-intake/sources/permissions-notes.docx"
+  ],
+  "featureAreas": [
+    "Approval policy setup",
+    "Run enforcement",
+    "Edge cases",
+    "Approval policy API",
+    "Approval permissions",
+    "Approval audit"
+  ],
+  "audienceGroundingRequired": true,
+  "scenarios": [
+    {
+      "feature": "Approval policy setup",
+      "description": "Create an approved provider rule",
+      "prerequisites": "Organization usage control is enabled and no provider rule exists",
+      "expectedResult": "Rule saves and appears in the approved artifacts list",
+      "testers": [],
+      "status": "Pending",
+      "scenarioType": "UI",
+      "sourceStatus": "source-backed",
+      "dependsOn": [],
+      "relatedBugIds": [],
+      "sourceRefs": [
+        "examples/source-document-intake/sources/feature-brief.md#text-line-7"
+      ],
+      "needsEngineeringReview": true,
+      "styleWarnings": [],
+      "notes": "Drafted from explicit source scenario block.",
+      "id": "T-401"
+    },
+    {
+      "feature": "Approval policy setup",
+      "description": "Update an approved provider version",
+      "prerequisites": "T-401",
+      "expectedResult": "Updated version is displayed and applies to the next workspace run",
+      "testers": [],
+      "status": "Pending",
+      "scenarioType": "UI",
+      "sourceStatus": "source-backed",
+      "dependsOn": [
+        "T-401"
+      ],
+      "relatedBugIds": [],
+      "sourceRefs": [
+        "examples/source-document-intake/sources/feature-brief.md#text-line-12"
+      ],
+      "needsEngineeringReview": true,
+      "styleWarnings": [],
+      "notes": "Drafted from explicit source scenario block.",
+      "id": "T-402"
+    },
+    {
+      "feature": "Run enforcement",
+      "description": "Run a workspace using an unapproved provider",
+      "prerequisites": "T-401 and the workspace configuration references an unapproved provider",
+      "expectedResult": "Run fails before apply and identifies the blocked provider",
+      "testers": [],
+      "status": "Pending",
+      "scenarioType": "Permissions",
+      "sourceStatus": "source-backed",
+      "dependsOn": [
+        "T-401"
+      ],
+      "relatedBugIds": [],
+      "sourceRefs": [
+        "examples/source-document-intake/sources/feature-brief.md#text-line-19"
+      ],
+      "needsEngineeringReview": true,
+      "styleWarnings": [],
+      "notes": "Drafted from explicit source scenario block.",
+      "id": "T-403"
+    },
+    {
+      "feature": "Edge cases",
+      "description": "Duplicate provider approval rules are rejected",
+      "prerequisites": "Review source document setup and preconditions.",
+      "expectedResult": "Duplicate provider approval rules are rejected.",
+      "testers": [],
+      "status": "Pending",
+      "scenarioType": "Edge Case",
+      "sourceStatus": "inferred",
+      "dependsOn": [],
+      "relatedBugIds": [],
+      "sourceRefs": [
+        "examples/source-document-intake/sources/feature-brief.md#text-line-26"
+      ],
+      "needsEngineeringReview": true,
+      "styleWarnings": [
+        "Scenario wording and setup were inferred from a requirement bullet."
+      ],
+      "notes": "Drafted from unstructured requirement text; confirm scenario wording and prerequisites.",
+      "id": "T-404"
+    },
+    {
+      "feature": "Approval policy API",
+      "description": "Create an approval rule through API",
+      "prerequisites": "Organization usage control is enabled",
+      "expectedResult": "API returns the created rule with a stable identifier",
+      "testers": [],
+      "status": "Pending",
+      "scenarioType": "API",
+      "sourceStatus": "source-backed",
+      "dependsOn": [],
+      "relatedBugIds": [],
+      "sourceRefs": [
+        "examples/source-document-intake/sources/api-notes.txt#text-line-4"
+      ],
+      "needsEngineeringReview": true,
+      "styleWarnings": [],
+      "notes": "Drafted from explicit source scenario block.",
+      "id": "T-405"
+    },
+    {
+      "feature": "Approval policy API",
+      "description": "Submit an invalid artifact address through API",
+      "prerequisites": "API token has permission to manage approval rules",
+      "expectedResult": "API returns a validation error and does not create a rule",
+      "testers": [],
+      "status": "Pending",
+      "scenarioType": "API",
+      "sourceStatus": "source-backed",
+      "dependsOn": [],
+      "relatedBugIds": [],
+      "sourceRefs": [
+        "examples/source-document-intake/sources/api-notes.txt#text-line-10"
+      ],
+      "needsEngineeringReview": true,
+      "styleWarnings": [],
+      "notes": "Drafted from explicit source scenario block.",
+      "id": "T-406"
+    },
+    {
+      "feature": "Approval permissions",
+      "description": "Open approval settings as a workspace member",
+      "prerequisites": "Workspace member does not have organization settings permission",
+      "expectedResult": "Approval settings are not displayed and direct access returns forbidden",
+      "testers": [],
+      "status": "Pending",
+      "scenarioType": "Permissions",
+      "sourceStatus": "source-backed",
+      "dependsOn": [],
+      "relatedBugIds": [],
+      "sourceRefs": [
+        "examples/source-document-intake/sources/permissions-notes.docx#text-line-4"
+      ],
+      "needsEngineeringReview": true,
+      "styleWarnings": [],
+      "notes": "Drafted from explicit source scenario block.",
+      "id": "T-407"
+    },
+    {
+      "feature": "Approval audit",
+      "description": "List approval rule changes",
+      "prerequisites": "An administrator has created and updated an approval rule",
+      "expectedResult": "Audit list shows the actor, changed rule, and change time",
+      "testers": [],
+      "status": "Pending",
+      "scenarioType": "UI",
+      "sourceStatus": "source-backed",
+      "dependsOn": [],
+      "relatedBugIds": [],
+      "sourceRefs": [
+        "examples/source-document-intake/sources/permissions-notes.docx#text-line-9"
+      ],
+      "needsEngineeringReview": true,
+      "styleWarnings": [],
+      "notes": "Drafted from explicit source scenario block.",
+      "id": "T-408"
+    }
+  ],
+  "bugs": [],
+  "sourceDocumentIntake": {
+    "status": "draft",
+    "documents": [
+      {
+        "path": "examples/source-document-intake/sources/feature-brief.md",
+        "type": "md",
+        "extractionMethod": "utf-8-text",
+        "sha256": "157af45949802161f03dcdf809675ff5bf5e4fe3963eb0bd686fea4d06d71f5b",
+        "characterCount": 885,
+        "draftScenarioCount": 4,
+        "warnings": []
+      },
+      {
+        "path": "examples/source-document-intake/sources/api-notes.txt",
+        "type": "txt",
+        "extractionMethod": "utf-8-text",
+        "sha256": "253beecfe892396e345cafd60c29db7e95914cb86af5f439668300871e98f502",
+        "characterCount": 502,
+        "draftScenarioCount": 2,
+        "warnings": []
+      },
+      {
+        "path": "examples/source-document-intake/sources/permissions-notes.docx",
+        "type": "docx",
+        "extractionMethod": "officecli-view-text",
+        "sha256": "dab11da16941ab3ac23e7accb25b99ca8c1780b936555f70cc1cdb6a1463b2ec",
+        "characterCount": 611,
+        "draftScenarioCount": 2,
+        "warnings": []
+      }
+    ],
+    "scenarioCount": 8,
+    "allScenariosRequireEngineeringReview": true,
+    "limitations": [
+      "Extraction is deterministic and does not understand arbitrary product prose.",
+      "Explicit scenario blocks provide better fidelity than requirement-bullet fallback.",
+      "Source-backed means the behavior is present in the document, not that engineering approved the test."
+    ]
+  }
+}

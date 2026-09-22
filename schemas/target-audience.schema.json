@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TargetAudienceResolution",
+  "type": "object",
+  "required": ["mode", "productArea", "audienceContext", "humanReviewRequired"],
+  "properties": {
+    "resolutionStatus": {
+      "type": "string",
+      "enum": ["confirmed", "needs-confirmation", "discovery-required"]
+    },
+    "mode": { "type": "string", "enum": ["catalog-grounded", "discovery"] },
+    "requestedArtifact": {
+      "type": "string",
+      "enum": ["qa", "research", "uxr-intake", "document-edit"]
+    },
+    "productArea": { "type": "string" },
+    "featureOrProblemSpace": { "type": "string" },
+    "selectedSource": { "type": ["string", "null"] },
+    "match": {
+      "type": "object",
+      "properties": {
+        "score": { "type": "number" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+        "reasons": { "type": "array", "items": { "type": "string" } },
+        "dataStatus": { "type": "string" }
+      }
+    },
+    "audienceContext": {
+      "type": "object",
+      "properties": {
+        "primaryPersona": { "$ref": "#/definitions/audienceClaim" },
+        "secondaryPersonas": { "type": "array", "items": { "$ref": "#/definitions/audienceClaim" } },
+        "jtbd": { "type": "array", "items": { "$ref": "#/definitions/audienceClaim" } },
+        "cuj": { "type": "array", "items": { "$ref": "#/definitions/audienceClaim" } }
+      }
+    },
+    "ambiguities": { "type": "array", "items": { "type": "string" } },
+    "missingContext": { "type": "array", "items": { "type": "string" } },
+    "allowedArtifacts": { "type": "array", "items": { "type": "string" } },
+    "blockedArtifacts": { "type": "array", "items": { "type": "string" } },
+    "humanReviewRequired": { "type": "boolean" },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string" },
+          "score": { "type": "number" },
+          "reasons": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "generatorContext": {
+      "type": "object",
+      "properties": {
+        "targetAudienceRef": { "type": ["string", "null"] },
+        "targetAudienceSummary": {
+          "type": "object",
+          "properties": {
+            "dataStatus": { "type": "string" },
+            "resolutionStatus": { "type": "string" },
+            "mode": { "type": "string" },
+            "confidence": { "type": "string" },
+            "primaryPersona": { "type": "string" },
+            "jtbd": { "type": "string" },
+            "jtbdList": { "type": "array", "items": { "type": "string" } },
+            "cujUsedForQA": { "type": "array", "items": { "type": "string" } },
+            "cujUsedForResearch": { "type": "array", "items": { "type": "string" } },
+            "sourceRefs": { "type": "array", "items": { "type": "string" } },
+            "humanReviewRequired": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "audienceClaim": {
+      "type": "object",
+      "required": ["text", "status", "confidence"],
+      "properties": {
+        "text": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["catalog-backed", "source-backed", "user-provided-assumption", "ai-inferred-assumption", "to-be-discovered", "validated-finding", "proposed-catalog-update"]
+        },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+        "sourceRefs": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

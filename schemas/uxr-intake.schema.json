@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UXRIntake",
+  "type": "object",
+  "required": ["studyName", "productArea", "researchType", "decisionInformed", "timeline", "humanApproved"],
+  "properties": {
+    "studyName": { "type": "string" },
+    "productArea": { "type": "string" },
+    "researchType": { "type": "string" },
+    "decisionInformed": { "type": "string" },
+    "primaryPersona": { "type": "string" },
+    "targetAudienceMode": { "type": "string", "enum": ["catalog-grounded", "discovery"] },
+    "jtbdOrDiscoveryStatement": { "type": "string" },
+    "timeline": { "type": "string" },
+    "pm": { "type": "string" },
+    "primaryContact": { "type": "string" },
+    "recruitingConstraints": { "type": "string" },
+    "sourceDocs": { "type": "array", "items": { "type": "string" } },
+    "humanApproved": { "type": "boolean" }
+  }
+}
+

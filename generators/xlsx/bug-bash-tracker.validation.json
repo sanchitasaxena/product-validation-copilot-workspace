@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BugBashTrackerValidationRules",
+  "type": "object",
+  "required": ["scenarioRules", "bugRules", "summaryRules"],
+  "properties": {
+    "scenarioRules": {
+      "type": "object",
+      "properties": {
+        "requiredFields": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["id", "feature", "description", "expectedResult", "status"]
+        },
+        "idPattern": { "type": "string", "default": "^T-[0-9]+$" },
+        "uniqueIds": { "type": "boolean", "default": true },
+        "acceptedStatuses": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["Pending", "In Progress", "Passed", "Failed", "Blocked"]
+        },
+        "disallowedDescriptionPrefixes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["Verify that", "As a user", "You are", "How would you", "Tell me about"]
+        },
+        "dependencyPattern": { "type": "string", "default": "T-[0-9]+" },
+        "failedScenarioRequiresBugOrNote": { "type": "boolean", "default": true }
+      }
+    },
+    "bugRules": {
+      "type": "object",
+      "properties": {
+        "requiredFields": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["type", "description", "status"]
+        },
+        "recommendedFields": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["dateReported", "feature", "severity", "owner", "evidenceLinks", "scenarioId"]
+        },
+        "acceptedTypes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["Bug", "Friction", "Improvement"]
+        },
+        "acceptedSeverities": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["1-Critical", "2-High", "3-Medium", "4-Low", "Unrated"]
+        },
+        "acceptedStatuses": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["New", "In Progress", "QA", "Resolved", "Deferred"]
+        },
+        "parseScenarioIdFromDescription": { "type": "boolean", "default": true },
+        "orphanBugAllowedWithClassification": { "type": "boolean", "default": true }
+      }
+    },
+    "summaryRules": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [
+        "scenarioCountByFeature",
+        "statusRateByFeature",
+        "failedScenariosWithoutBugs",
+        "bugsByType",
+        "bugsBySeverity",
+        "openCriticalHighBugs",
+        "ownerWorkload",
+        "orphanBugs",
+        "blockedDependencyChains",
+        "releaseReadinessRisks"
+      ]
+    }
+  }
+}

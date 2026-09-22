@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UnmoderatedTest",
+  "type": "object",
+  "required": ["title", "introduction", "tasks", "closing", "humanReviewRequired"],
+  "properties": {
+    "title": { "type": "string", "minLength": 1 },
+    "audienceResolutionRef": { "type": ["string", "null"] },
+    "introduction": { "type": "string", "minLength": 1 },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "cuj", "prompt", "successCriteria", "postTaskQuestions"],
+        "properties": {
+          "id": { "type": "string" },
+          "cuj": { "type": "string", "minLength": 1 },
+          "prompt": { "type": "string", "minLength": 1 },
+          "successCriteria": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "postTaskQuestions": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "closing": { "type": "array", "items": { "type": "string" } },
+    "humanReviewRequired": { "type": "boolean", "const": true }
+  }
+}

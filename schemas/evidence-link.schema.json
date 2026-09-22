@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EvidenceLink",
+  "type": "object",
+  "required": ["id", "type", "uri", "sourceLabel"],
+  "properties": {
+    "id": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": ["doc", "spreadsheet", "slack", "box", "screenshot", "logs", "jira", "github", "transcript", "other"]
+    },
+    "uri": { "type": "string" },
+    "sourceLabel": { "type": "string" },
+    "excerpt": { "type": "string" },
+    "confidence": { "type": "string", "enum": ["high", "medium", "low"] }
+  }
+}

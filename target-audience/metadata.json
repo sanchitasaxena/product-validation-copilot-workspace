@@ -1,0 +1,9 @@
+{
+  "name": "Target Audience Catalog local snapshot",
+  "mode": "local-snapshot-first",
+  "sourceUrl": "https://ibm-my.sharepoint.com/shared?id=%2Fpersonal%2Fbenderg%5Fibm%5Fcom%2FDocuments%2FUX%20Research%20Repository%2FTarget%20Audience%20Catalog%20Original%20Assets&listurl=%2Fpersonal%2Fbenderg%5Fibm%5Fcom%2FDocuments&viewid=12d19fd6%2D557c%2D4611%2D9e5a%2Dd1b4a0d12bc3&ga=1",
+  "status": "not-indexed",
+  "lastRefreshed": null,
+  "owner": null,
+  "notes": "Replace sourceUrl metadata with the approved canonical catalog URL during catalog inventory. Do not store credentials here."
+}

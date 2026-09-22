@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BugReport",
+  "type": "object",
+  "required": ["id", "type", "description", "status"],
+  "properties": {
+    "id": { "type": "string" },
+    "dateReported": { "type": "string" },
+    "type": { "type": "string", "enum": ["Bug", "Friction", "Improvement"] },
+    "feature": { "type": "string" },
+    "scenarioId": { "type": "string" },
+    "scenarioIds": { "type": "array", "items": { "type": "string" } },
+    "description": { "type": "string" },
+    "severity": { "type": "string", "enum": ["1-Critical", "2-High", "3-Medium", "4-Low", "Unrated"] },
+    "owner": { "type": "string" },
+    "evidenceLinks": { "type": "array", "items": { "$ref": "evidence-link.schema.json" } },
+    "status": { "type": "string", "enum": ["New", "In Progress", "QA", "Resolved", "Deferred"] },
+    "notes": { "type": "string" },
+    "orphanClassification": { "type": "string", "enum": ["orphan", "exploratory", "no-scenario", "not-orphan"] },
+    "validationWarnings": { "type": "array", "items": { "type": "string" } },
+    "releaseBlocking": { "type": "boolean" }
+  }
+}

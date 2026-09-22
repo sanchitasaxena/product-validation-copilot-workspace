@@ -1,0 +1,13 @@
+Synthetic API implementation notes
+
+Feature area: Approval policy API
+Scenario: Create an approval rule through API
+Prerequisites: Organization usage control is enabled
+Expected result: API returns the created rule with a stable identifier
+Interface: API
+
+Feature area: Approval policy API
+Scenario: Submit an invalid artifact address through API
+Prerequisites: API token has permission to manage approval rules
+Expected result: API returns a validation error and does not create a rule
+Interface: API

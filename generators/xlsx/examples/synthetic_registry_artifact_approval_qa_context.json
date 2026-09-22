@@ -1,0 +1,167 @@
+{
+  "feature": "Registry artifact approval workflow",
+  "productArea": "HCP Terraform Registry",
+  "qaGoal": "bug-bash",
+  "scenarioStyleSource": "Original RAUC bug tracker engineering-authored scenarios",
+  "styleGuideRef": "qa/scenario-style-guide.md",
+  "validationRulesRef": "generators/xlsx/bug-bash-tracker.rules.json",
+  "sourceDocs": [
+    "target-audience/examples/synthetic-registry-artifact-approval.audience.json",
+    "Synthetic feature brief: registry artifact approval workflow"
+  ],
+  "featureAreas": [
+    "Approval policy setup",
+    "Run enforcement",
+    "Approval rule updates",
+    "Audit visibility"
+  ],
+  "audienceGroundingRequired": true,
+  "targetAudienceRef": "target-audience/examples/synthetic-registry-artifact-approval.audience.json",
+  "targetAudienceSummary": {
+    "dataStatus": "synthetic-test-data",
+    "mode": "catalog-grounded fixture",
+    "primaryPersona": "Synthetic platform admin responsible for governing approved Terraform providers and modules.",
+    "jtbd": "When teams consume Terraform registry artifacts, I need to approve and control which artifacts are allowed so that workspaces do not use unapproved dependencies.",
+    "cujUsedForQA": [
+      "Admin configures allowed registry artifacts.",
+      "Workspace run fails when an unapproved artifact is used.",
+      "Admin reviews and updates approval rules."
+    ],
+    "humanReviewRequired": true
+  },
+  "scenarios": [
+    {
+      "id": "T-301",
+      "feature": "Approval policy setup",
+      "description": "Create an approved provider rule",
+      "prerequisites": "Organization has usage control enabled and no provider approval rule exists",
+      "expectedResult": "Can save the provider rule\nRule is listed as approved on the approval policy page",
+      "testers": ["Synthetic Admin Tester"],
+      "status": "Passed",
+      "scenarioType": "UI",
+      "sourceStatus": "inferred",
+      "dependsOn": [],
+      "relatedBugIds": [],
+      "sourceRefs": ["target-audience/examples/synthetic-registry-artifact-approval.audience.json"],
+      "needsEngineeringReview": true,
+      "styleWarnings": [],
+      "notes": "Synthetic scenario derived from provisional CUJ: Admin configures allowed registry artifacts."
+    },
+    {
+      "id": "T-302",
+      "feature": "Run enforcement",
+      "description": "Run a workspace using an unapproved provider",
+      "prerequisites": "T-301\nWorkspace configuration references a provider that is not approved",
+      "expectedResult": "Run fails before apply\nError message identifies the unapproved provider",
+      "testers": ["Synthetic Admin Tester", "Synthetic Workspace Tester"],
+      "status": "Failed",
+      "scenarioType": "Permissions",
+      "sourceStatus": "inferred",
+      "dependsOn": ["T-301"],
+      "relatedBugIds": ["BUG-001"],
+      "sourceRefs": ["target-audience/examples/synthetic-registry-artifact-approval.audience.json"],
+      "needsEngineeringReview": true,
+      "styleWarnings": [],
+      "notes": "Synthetic scenario derived from provisional CUJ: Workspace run fails when an unapproved artifact is used."
+    },
+    {
+      "id": "T-303",
+      "feature": "Run enforcement",
+      "description": "Using Terraform CLI to create a blocked run",
+      "prerequisites": "T-301\nLocal Terraform CLI is configured against the Workspace Under Test",
+      "expectedResult": "Terraform CLI run returns an approval policy error\nRun is recorded as failed in the workspace run list",
+      "testers": ["Synthetic CLI Tester"],
+      "status": "Pending",
+      "scenarioType": "CLI",
+      "sourceStatus": "inferred",
+      "dependsOn": ["T-301"],
+      "relatedBugIds": [],
+      "sourceRefs": ["target-audience/examples/synthetic-registry-artifact-approval.audience.json"],
+      "needsEngineeringReview": true,
+      "styleWarnings": [],
+      "notes": "Synthetic CLI coverage for workspace operator path."
+    },
+    {
+      "id": "T-304",
+      "feature": "Approval rule updates",
+      "description": "Update an approved module rule after a failed run",
+      "prerequisites": "T-302\nA failed run exists for an unapproved module",
+      "expectedResult": "Can add the module to approved artifacts\nRe-running the workspace completes without approval policy error",
+      "testers": ["Synthetic Admin Tester"],
+      "status": "Passed",
+      "scenarioType": "UI",
+      "sourceStatus": "inferred",
+      "dependsOn": ["T-302"],
+      "relatedBugIds": [],
+      "sourceRefs": ["target-audience/examples/synthetic-registry-artifact-approval.audience.json"],
+      "needsEngineeringReview": true,
+      "styleWarnings": [],
+      "notes": "Synthetic scenario derived from provisional CUJ: Admin reviews and updates approval rules."
+    },
+    {
+      "id": "T-305",
+      "feature": "Audit visibility",
+      "description": "Check if approval decision is visible on the run details page",
+      "prerequisites": "T-302",
+      "expectedResult": "Run details show blocked artifact name\nAdmin can identify which approval rule is missing",
+      "testers": ["Synthetic Admin Tester"],
+      "status": "Passed",
+      "scenarioType": "UI",
+      "sourceStatus": "inferred",
+      "dependsOn": ["T-302"],
+      "relatedBugIds": [],
+      "sourceRefs": ["target-audience/examples/synthetic-registry-artifact-approval.audience.json"],
+      "needsEngineeringReview": true,
+      "styleWarnings": [],
+      "notes": "Synthetic audience influenced expected result: admin must be able to diagnose missing approval."
+    }
+  ],
+  "bugs": [
+    {
+      "id": "BUG-001",
+      "dateReported": "2026-09-09",
+      "type": "Bug",
+      "feature": "Run enforcement",
+      "scenarioId": "T-302",
+      "scenarioIds": ["T-302"],
+      "description": "T-302: Run fails but error message does not show the unapproved provider name",
+      "severity": "2-High",
+      "owner": "Synthetic Engineering Owner",
+      "evidenceLinks": [
+        {
+          "id": "E-001",
+          "type": "logs",
+          "uri": "synthetic://run-log/T-302",
+          "sourceLabel": "Synthetic run log"
+        }
+      ],
+      "status": "New",
+      "releaseBlocking": true,
+      "orphanClassification": "not-orphan",
+      "validationWarnings": [],
+      "notes": "Synthetic linked bug for failed scenario."
+    },
+    {
+      "id": "BUG-002",
+      "dateReported": "2026-09-09",
+      "type": "Improvement",
+      "feature": "Audit visibility",
+      "description": "No scenario. Admin audit table does not show who changed the approval rule",
+      "severity": "4-Low",
+      "owner": "",
+      "evidenceLinks": [
+        {
+          "id": "E-002",
+          "type": "other",
+          "uri": "synthetic://screenshot/audit-table",
+          "sourceLabel": "Synthetic screenshot"
+        }
+      ],
+      "status": "New",
+      "releaseBlocking": false,
+      "orphanClassification": "no-scenario",
+      "validationWarnings": [],
+      "notes": "Synthetic exploratory finding not tied to planned scenario."
+    }
+  ]
+}

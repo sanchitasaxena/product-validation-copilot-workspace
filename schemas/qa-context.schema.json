@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QAContext",
+  "type": "object",
+  "required": ["feature", "productArea", "qaGoal", "scenarioStyleSource"],
+  "properties": {
+    "feature": { "type": "string" },
+    "productArea": { "type": "string" },
+    "qaGoal": { "type": "string", "enum": ["bug-bash", "release-readiness", "regression", "exploratory"] },
+    "scenarioStyleSource": { "type": "string" },
+    "sourceDocs": { "type": "array", "items": { "type": "string" } },
+    "featureAreas": { "type": "array", "items": { "type": "string" } },
+    "audienceGroundingRequired": { "type": "boolean" },
+    "scenarios": { "type": "array", "items": { "$ref": "qa-scenario.schema.json" } },
+    "bugs": { "type": "array", "items": { "$ref": "bug-report.schema.json" } },
+    "validationRulesRef": { "type": "string" },
+    "styleGuideRef": { "type": "string" },
+    "targetAudienceRef": { "type": ["string", "null"] },
+    "targetAudienceSummary": { "type": "object" },
+    "workflowMetadata": { "type": "object" },
+    "sourceDocumentIntake": {
+      "type": "object",
+      "properties": {
+        "status": { "type": "string", "enum": ["draft", "reviewed", "approved"] },
+        "documents": { "type": "array", "items": { "type": "object" } },
+        "scenarioCount": { "type": "integer", "minimum": 0 },
+        "allScenariosRequireEngineeringReview": { "type": "boolean" },
+        "limitations": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "releaseReadinessSummary": {
+      "type": "object",
+      "properties": {
+        "scenarioCountsByFeature": { "type": "object" },
+        "statusRatesByFeature": { "type": "object" },
+        "openCriticalHighBugs": { "type": "array", "items": { "type": "string" } },
+        "failedScenariosWithoutBugs": { "type": "array", "items": { "type": "string" } },
+        "orphanBugs": { "type": "array", "items": { "type": "string" } },
+        "blockedDependencyChains": { "type": "array", "items": { "type": "string" } },
+        "risks": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

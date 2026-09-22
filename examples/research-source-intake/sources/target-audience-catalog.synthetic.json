@@ -1,0 +1,32 @@
+{
+  "syntheticTestData": true,
+  "mode": "catalog-grounded",
+  "productArea": "HCP Terraform Registry",
+  "featureOrProblemSpace": "Registry artifact approval workflow",
+  "audienceContext": {
+    "primaryPersona": {
+      "text": "Platform admin responsible for governing approved Terraform providers and modules.",
+      "status": "catalog-backed",
+      "confidence": "high",
+      "sourceRefs": ["Synthetic catalog fixture for tests and documentation only."]
+    },
+    "secondaryPersonas": [],
+    "jtbd": [
+      {
+        "text": "When teams consume Terraform registry artifacts, I need to approve and control which artifacts are allowed so that workspaces do not use unapproved dependencies.",
+        "status": "catalog-backed",
+        "confidence": "high",
+        "sourceRefs": ["Synthetic catalog fixture for tests and documentation only."]
+      }
+    ],
+    "cuj": [
+      {
+        "text": "Admin reviews and updates approval rules.",
+        "status": "catalog-backed",
+        "confidence": "high",
+        "sourceRefs": ["Synthetic catalog fixture for tests and documentation only."]
+      }
+    ]
+  },
+  "humanReviewRequired": true
+}

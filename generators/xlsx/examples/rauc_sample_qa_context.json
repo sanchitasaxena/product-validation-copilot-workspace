@@ -1,0 +1,193 @@
+{
+  "feature": "Registry Artifact Usage Control (RAUC)",
+  "productArea": "HCP Terraform Registry",
+  "qaGoal": "bug-bash",
+  "scenarioStyleSource": "Original RAUC bug tracker engineering-authored scenarios",
+  "styleGuideRef": "qa/scenario-style-guide.md",
+  "validationRulesRef": "generators/xlsx/bug-bash-tracker.rules.json",
+  "sourceDocs": [
+    "RAUC_Bug_Tracker_2026_copy.xlsx",
+    "User Guide_Control usage over Terraform registry artifacts & their versions.docx"
+  ],
+  "featureAreas": [
+    "Registry environment tags",
+    "Assigning tags",
+    "Visibility of tags and environments",
+    "Registry usage control"
+  ],
+  "audienceGroundingRequired": false,
+  "scenarios": [
+    {
+      "id": "T-104",
+      "feature": "Registry environment tags",
+      "description": "Create a Registry Environment Tag",
+      "prerequisites": "No Environment Tag exists previously for the org",
+      "expectedResult": "Can save the tag\nCan see a `Registry` Label next to the tag",
+      "testers": ["Mrinali"],
+      "status": "Passed",
+      "scenarioType": "UI",
+      "sourceStatus": "source-backed",
+      "dependsOn": [],
+      "relatedBugIds": ["BUG-002"],
+      "needsEngineeringReview": false,
+      "notes": ""
+    },
+    {
+      "id": "T-109",
+      "feature": "Registry environment tags",
+      "description": "Delete a value that has been assigned to a Registry Module Version",
+      "prerequisites": "The environment tag is assigned to a registry module version",
+      "expectedResult": "Upon save the tag should be deleted from the registry module version it was assigned to",
+      "testers": ["Mrinali"],
+      "status": "Failed",
+      "scenarioType": "UI",
+      "sourceStatus": "source-backed",
+      "dependsOn": ["T-104"],
+      "relatedBugIds": ["BUG-001"],
+      "needsEngineeringReview": false,
+      "notes": ""
+    },
+    {
+      "id": "T-110",
+      "feature": "Assigning tags",
+      "description": "Assign a tag to a Private Registry Module",
+      "prerequisites": "Create a couple of Project tags",
+      "expectedResult": "Able to assign more than 1 tag\nAll tags are displayed on the UI",
+      "testers": ["Steve", "Mrinali"],
+      "status": "Passed",
+      "scenarioType": "UI",
+      "sourceStatus": "source-backed",
+      "dependsOn": [],
+      "relatedBugIds": ["BUG-003"],
+      "needsEngineeringReview": false,
+      "notes": ""
+    },
+    {
+      "id": "T-202",
+      "feature": "Registry usage control",
+      "description": "Enabling Usage Control",
+      "prerequisites": "T-201",
+      "expectedResult": "Go to Organization Settings and ensure that Usage Control is enabled and that the project is selected in the list\nPerforming a run in the Workspace Under Test should fail due to unapproved artifacts",
+      "testers": ["Olivia", "Russell", "Mrinali", "Valeriia"],
+      "status": "Passed",
+      "scenarioType": "Permissions",
+      "sourceStatus": "source-backed",
+      "dependsOn": ["T-201"],
+      "relatedBugIds": ["BUG-004"],
+      "needsEngineeringReview": false,
+      "notes": ""
+    },
+    {
+      "id": "T-205",
+      "feature": "Registry usage control",
+      "description": "Using Terraform CLI to create a passing run",
+      "prerequisites": "T-204",
+      "expectedResult": "Performing a run in the Workspace Under Test using Terraform CLI should complete without error",
+      "testers": ["Mrinali"],
+      "status": "Pending",
+      "scenarioType": "CLI",
+      "sourceStatus": "source-backed",
+      "dependsOn": ["T-204"],
+      "relatedBugIds": [],
+      "needsEngineeringReview": false,
+      "notes": ""
+    }
+  ],
+  "bugs": [
+    {
+      "id": "BUG-001",
+      "dateReported": "2026-03-03",
+      "type": "Bug",
+      "feature": "Registry environment tags",
+      "scenarioId": "T-109",
+      "description": "T-109 : Deleting an environment tag value does not remove it from the assigned module version",
+      "severity": "Unrated",
+      "owner": "",
+      "evidenceLinks": [],
+      "status": "New",
+      "releaseBlocking": false,
+      "orphanClassification": "not-orphan",
+      "notes": ""
+    },
+    {
+      "id": "BUG-002",
+      "dateReported": "2026-03-03",
+      "type": "Improvement",
+      "feature": "Registry environment tags",
+      "scenarioId": "T-104",
+      "description": "T104 When asked to create a registry environment tag, the tag management screen doesn't use those words so it was difficult to know where to start",
+      "severity": "4-Low",
+      "owner": "",
+      "evidenceLinks": [
+        {
+          "id": "E-001",
+          "type": "slack",
+          "uri": "https://example.invalid/evidence/1",
+          "sourceLabel": "Slack thread"
+        }
+      ],
+      "status": "New",
+      "releaseBlocking": false,
+      "orphanClassification": "not-orphan",
+      "notes": ""
+    },
+    {
+      "id": "BUG-003",
+      "dateReported": "2026-03-03",
+      "type": "Bug",
+      "feature": "Assigning tags",
+      "scenarioId": "T-110",
+      "description": "T-110: Effective tag bindings API does not return newly added project tags",
+      "severity": "1-Critical",
+      "owner": "",
+      "evidenceLinks": [
+        {
+          "id": "E-002",
+          "type": "slack",
+          "uri": "https://example.invalid/evidence/2",
+          "sourceLabel": "Slack thread"
+        }
+      ],
+      "status": "New",
+      "releaseBlocking": true,
+      "orphanClassification": "not-orphan",
+      "notes": "Needs owner before release-readiness review."
+    },
+    {
+      "id": "BUG-004",
+      "dateReported": "2026-03-11",
+      "type": "Bug",
+      "feature": "Registry usage control",
+      "scenarioId": "T-202",
+      "description": "T-202: UI - Super Select is jumping on adding new values",
+      "severity": "4-Low",
+      "owner": "",
+      "evidenceLinks": [],
+      "status": "New",
+      "releaseBlocking": false,
+      "orphanClassification": "not-orphan",
+      "notes": ""
+    },
+    {
+      "id": "BUG-005",
+      "dateReported": "2026-03-03",
+      "type": "Bug",
+      "feature": "Visibility of tags and environments",
+      "description": "No scenario. Noticed a 404 while rendering a public registry module",
+      "severity": "4-Low",
+      "owner": "",
+      "evidenceLinks": [
+        {
+          "id": "E-003",
+          "type": "screenshot",
+          "uri": "https://example.invalid/evidence/image.png",
+          "sourceLabel": "Screenshot"
+        }
+      ],
+      "status": "New",
+      "releaseBlocking": false,
+      "orphanClassification": "no-scenario",
+      "notes": "Exploratory finding not tied to planned scenario."
+    }
+  ]
+}

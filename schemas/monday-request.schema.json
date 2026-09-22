@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MondayUXRRequestDraft",
+  "type": "object",
+  "required": [
+    "formUrl",
+    "draftAnswers",
+    "missingQuestions",
+    "humanReviewRequired",
+    "submissionStatus",
+    "fieldMappingStatus"
+  ],
+  "properties": {
+    "formUrl": { "type": "string", "format": "uri" },
+    "draftAnswers": {
+      "type": "object",
+      "required": ["studyName", "productArea", "researchType", "decisionInformed"],
+      "properties": {
+        "studyName": { "type": "string" },
+        "productArea": { "type": "string" },
+        "researchType": { "type": "string" },
+        "decisionInformed": { "type": "string" },
+        "primaryPersona": { "type": ["string", "null"] },
+        "jtbdAndCuj": { "type": "string" },
+        "timeline": { "type": "string" },
+        "requester": { "type": "string" },
+        "primaryContact": { "type": "string" },
+        "recruitingConstraints": { "type": "string" },
+        "sourceDocuments": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "missingQuestions": { "type": "array", "items": { "type": "string" } },
+    "humanReviewRequired": { "type": "boolean", "const": true },
+    "submissionStatus": { "type": "string", "enum": ["draft", "approved-for-copy"] },
+    "fieldMappingStatus": { "type": "string", "enum": ["unverified-live-form", "verified"] }
+  }
+}

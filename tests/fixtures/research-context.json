@@ -1,0 +1,15 @@
+{
+  "title": "Registry approval research",
+  "productArea": "HCP Terraform Registry",
+  "decisionInformed": "Whether approval workflows are understandable to platform administrators",
+  "workflow": "research-plan",
+  "targetAudienceMode": "catalog-grounded",
+  "researchQuestions": [
+    "Can administrators identify the approval state?",
+    "Can administrators recover from a blocked artifact?"
+  ],
+  "sourceDocs": ["examples/source-document-intake/sources/feature-brief.md"],
+  "studyName": "Approval workflow usability study",
+  "researchType": "Moderated usability study",
+  "timeline": "Two weeks"
+}

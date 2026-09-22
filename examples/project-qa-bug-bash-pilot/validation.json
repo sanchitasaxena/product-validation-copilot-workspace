@@ -1,0 +1,10 @@
+{
+  "warnings": [
+    {
+      "severity": "warning",
+      "area": "Bug_Tracker",
+      "rowId": "BUG-002",
+      "message": "Bug row has no linked scenario ID."
+    }
+  ]
+}
