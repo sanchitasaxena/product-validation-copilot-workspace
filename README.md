@@ -126,6 +126,20 @@ python3 tools/run_research_workflow.py \
   --output /tmp/product-validation-demo/monday-request.json
 ```
 
+No real UXR-intake form URL is bundled with this workspace. The generated draft
+uses a placeholder `formUrl` unless you supply your organization's real form:
+
+```bash
+python3 tools/run_research_workflow.py \
+  --workflow monday-request \
+  --input tests/fixtures/research-context.json \
+  --output /tmp/product-validation-demo/monday-request.json \
+  --monday-form-url "https://forms.monday.com/forms/<your-form-id>"
+```
+
+You can also set the `MONDAY_FORM_URL` environment variable instead of passing
+`--monday-form-url` on every invocation.
+
 Review and copy from:
 
 ```text

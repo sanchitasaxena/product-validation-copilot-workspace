@@ -5,13 +5,17 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
 from typing import Any
 
 WORKSPACE = Path(__file__).resolve().parents[1]
-MONDAY_FORM_URL = "https://forms.monday.com/forms/db6711e0391b4197671a39cb77ac1d1b?r=use1"
+# No default UXR intake form is bundled. Configure your organization's real
+# form URL with --monday-form-url or the MONDAY_FORM_URL environment
+# variable; otherwise a clearly-labeled placeholder is used.
+MONDAY_FORM_URL_PLACEHOLDER = "https://forms.monday.com/forms/REPLACE-WITH-YOUR-ORG-FORM-ID"
 
 
 def load(path: Path) -> dict[str, Any]:
@@ -247,8 +251,13 @@ def build_monday_request(context: dict[str, Any]) -> dict[str, Any]:
         "primaryContact": "Who is the primary contact for this request?",
         "recruitingConstraints": "Are there recruiting, entitlement, geography, or accessibility constraints?",
     }
+    form_url = (
+        context.get("mondayFormUrl")
+        or os.environ.get("MONDAY_FORM_URL")
+        or MONDAY_FORM_URL_PLACEHOLDER
+    )
     return {
-        "formUrl": MONDAY_FORM_URL,
+        "formUrl": form_url,
         "draftAnswers": answers,
         "missingQuestions": [question for field, question in questions.items() if not answers[field]],
         "humanReviewRequired": True,
@@ -385,6 +394,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--research-type", help="Override researchType for uxr-intake.")
     parser.add_argument("--timeline", help="Override timeline.")
     parser.add_argument(
+        "--monday-form-url",
+        help=(
+            "Your organization's real UXR-intake form URL for monday-request/uxr-intake. "
+            "Falls back to the MONDAY_FORM_URL environment variable, then a placeholder."
+        ),
+    )
+    parser.add_argument(
         "--catalog-source",
         action="append",
         help="Approved Target Audience Catalog JSON file or directory. May be repeated.",
@@ -441,7 +457,7 @@ def main() -> None:
         context = load(Path(args.input).expanduser().resolve())
         output = Path(args.output).expanduser().resolve()
 
-    for override_field, value in (("studyName", args.study_name), ("researchType", args.research_type), ("timeline", args.timeline), ("decisionInformed", args.decision_informed)):
+    for override_field, value in (("studyName", args.study_name), ("researchType", args.research_type), ("timeline", args.timeline), ("decisionInformed", args.decision_informed), ("mondayFormUrl", args.monday_form_url)):
         if value:
             context[override_field] = value
 
